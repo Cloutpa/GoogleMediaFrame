@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Media Frame</title>
+  <link rel="stylesheet" type="text/css" href="./themes/theme.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="948771243191-7vdu4sgjoelu6toe4imgic9mnffjmdos.apps.googleusercontent.com">
+  </head>
+
+  <body>
+     <header>
+<h1> Google Media Frame </h1>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#news">Albums</a></li>
+          <li><a href="#contact">Media Frame</a></li>
+          <li style="float:right"><a class="active" href="#about">Sign In</a></li>
+        </ul>
+    </header>
+
+    <main>
+    <h1> Welcome to Google Media Frame! </h1>
+    <p> Put your favorite moments on display for family and friends. To get started, Connect to your Google Account </p>
+
+    <div id="my-signin2"></div>
+
+    <script>
+       function onSuccess(googleUser) {
+         console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+       }
+       function onFailure(error) {
+         console.log(error);
+       }
+       function renderButton() {
+         gapi.signin2.render('my-signin2', {
+           'scope': 'profile email',
+           'width': 240,
+           'height': 50,
+           'longtitle': true,
+           'theme': 'dark',
+           'onsuccess': onSuccess,
+           'onfailure': onFailure
+         });
+       }
+     </script>
+
+     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+
+  </main>
+</body>
+</html>
