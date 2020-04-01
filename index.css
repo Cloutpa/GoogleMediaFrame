@@ -1,0 +1,230 @@
+/* Paul Cloutier
+ */
+header, nav, main, aside, footer {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin: 0;
+  background-color: #445688;
+}
+
+main {
+  width: auto;
+  height: auto;
+  background-color: ##FFFFFF;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+
+footer{
+  text-align: center;
+  font-style: italic;
+  background-color: #222222;
+  clear: both;
+  color: #FFFFFF;
+}
+
+#wrapper {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFFFFF;
+  box-shadow: 5px 5px 2px #000000;
+}
+
+header {
+  font-size: 36px;
+  background-color: #FFFFFF;
+  height: 126px;
+}
+
+h1 { text-align: center;
+  margin:0;
+  padding:10px;
+}
+
+h2 {
+  text-align: center;
+}
+
+
+main p {
+  font-size: 18px;
+}
+main img {
+  margin: auto;
+}
+
+
+div.signedIn{
+display: none;
+
+
+}
+p {
+  text-align: center;
+}
+
+ main a:link {
+   color: black;
+   text-decoration: none;
+}
+
+/* visited link */
+main a:visited {
+  color: grey;
+  text-decoration: none;
+}
+
+/* mouse over link */
+main a:hover {
+  color: grey;
+  text-decoration: none;
+}
+
+/* selected link */
+main a:active {
+  text-decoration: none;
+  }
+  /* Footer Links
+   */
+  footer a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  /* visited link */
+  footer a:visited {
+    color: #FFFFFF;
+
+    text-decoration: none;
+  }
+
+  /* mouse over link */
+  footer a:hover {
+    color: #FFFFFF;
+
+    text-decoration: none;
+  }
+
+  /* selected link */
+  footer a:active {
+    color: #FFFFFF;
+
+      text-decoration: none;
+    }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: #666464;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+main .back-to-top {
+  position: fixed;
+  bottom:20px;
+  right: 200px;
+  background-color: #FFFFFF;
+  padding:15px;
+}
+
+aside a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+aside a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/* mouse over link */
+aside a:hover {
+  color: grey;
+  text-decoration: none;
+}
+
+/* selected link */
+aside a:active {
+  color: black;
+  text-decoration: none;
+ }
+
+
+ /* Create two equal columns that floats next to each other */
+ .column {
+   float: left;
+   width: 50%;
+   padding: 10px;
+ }
+
+ .column img {
+   margin-top: 12px;
+ }
+
+ /* Clear floats after the columns */
+ .row:after {
+   content: "";
+   display: table;
+   clear: both;
+ }
+
+/* 
+.signedInClass{
+display: block;
+
+} */
