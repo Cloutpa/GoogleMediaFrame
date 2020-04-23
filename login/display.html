@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Paul Cloutier">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Display</title>
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon_io/site.webmanifest">
+
+<!-- FancyButton -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<meta name="theme-color" content="#563d7c">
+<!-- Start Google  -->
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <meta name="google-signin-client_id" content='325108795912-kqqpq12nh4n1utvi9omta42kf4gqknpo.apps.googleusercontent.com'>
+<!-- End Google -->
+
+<!-- import my js -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link  href="fancybox/jquery.fancybox.min.css" rel="stylesheet">
+  <script src="fancybox/jquery.fancybox.js"></script>
+
+
+<!-- Using new JS2, can change back into the original if needed, signin -->
+<script src="signin2.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+
+    <!-- Buttons -->
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+             rel="stylesheet">
+
+
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Google Photo Frame</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="album.html">Albums</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="photos.html">Photos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="display.html">Display</a>
+      </li>
+
+
+    </ul>
+    <span class="navbar-text form-inline  mt-2 mt-md-0">
+      <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+<a class="nav-link" id="userName">
+</a>
+</li>
+<li class="nav-item">
+
+  <button class="btn btn-primary my-2 my-sm-0"  id="sign-in-or-out-button" type="submit">Sign In</button>
+  </li>
+  </ul>
+        </span>
+  </div>
+</nav>
+
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1>Google Albums</h1>
+      <p class="lead text-muted">
+        Presents all Google Photos that the user selected to be displayed.
+        Once an album has been chosen to be displayed, it will show up here until the user goes back to Albums and deselects the album.
+      </p>
+      <p>
+              <a href="#gallery-1" class="btn btn-primary my-2">Display all selected photos photos</a>
+
+
+
+      </div>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+<!-- Start Row -->
+      <div class="row" id="theDiv">
+
+
+
+<!-- End Row div below -->
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<footer class="container">
+    <p>Paul Cloutier</p>
+    <p>Google Photo Frame</p>
+
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script async defer src="https://apis.google.com/js/api.js"
+        onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
+
+
+
+</html>

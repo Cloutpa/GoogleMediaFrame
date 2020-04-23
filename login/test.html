@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html  dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- FancyButton -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
+
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <meta name="theme-color" content="#563d7c">
+    <!-- Start Google  -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <script src="https://apis.google.com/js/api.js"></script>
+      <meta name="google-signin-client_id" content='325108795912-kqqpq12nh4n1utvi9omta42kf4gqknpo.apps.googleusercontent.com'>
+    <!-- End Google -->
+
+    <!-- import my js -->
+    	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    	<link  href="fancybox/jquery.fancybox.min.css" rel="stylesheet">
+      <script src="fancybox/jquery.fancybox.js"></script>
+
+
+    <!-- Using new JS2, can change back into the original if needed, signin -->
+    <script src="signin2.js"></script>
+
+        <!-- Custom styles for this template -->
+        <link href="album.css" rel="stylesheet">
+
+        <!-- Buttons -->
+           <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                 rel="stylesheet">
+
+
+                 <style media="screen">
+                 .hidden { display: none; }
+
+                 </style>
+  </head>
+  <body>
+    <button class="fancybox" value="Open Fancybox">Open Fancybox</button>
+       <div class="hidden" id="fancybox-popup-form">
+       </div>
+
+
+<script>
+
+let myArray = [];
+let array;
+
+
+array = ['https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80', 'https://images.unsplash.com/photo-1523719185231-aff40a400361?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80' ];
+console.log(array.length);
+
+for(x = 0; x < array.length; x++){
+myArray[x] = {src : array[x], href : x};
+}
+
+
+
+$('.fancybox').click(function () {
+  $.fancybox.open(myArray,{
+
+
+  });
+
+
+});
+
+
+
+
+
+</script>
+
+  </body>
+</html>

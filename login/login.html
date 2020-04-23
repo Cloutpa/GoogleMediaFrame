@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+  <!--
+Work that still needs to be done
+Need to pass the signed in auth to a different webpage.
+
+Need to have some type of data structure to hold the elements that will be on display.
+
+Need to be able to add and remove elements from this list.
+
+
+ -->
+  <title>Google Photo Frame</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Paul Cloutier">
+  <meta name="generator" content="Jekyll v3.8.6">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon_io/site.webmanifest">
+
+  <!-- BootStrap Bill -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="theme-color" content="#563d7c">
+<!-- End BootStrap Bill -->
+
+<!-- Start Google  -->
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <meta name="google-signin-client_id" content='325108795912-kqqpq12nh4n1utvi9omta42kf4gqknpo.apps.googleusercontent.com'>
+<!-- End Google -->
+
+<!-- My Style -->
+<link rel="stylesheet" type="text/css" href="login.css">
+<!-- End Style -->
+
+<!-- import my js -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<link  href="fancybox/jquery.fancybox.min.css" rel="stylesheet">
+  <script src="fancybox/jquery.fancybox.js"></script>
+
+
+<!-- Using new JS2, can change back into the original if needed, signin -->
+<script src="signin2.js"></script>
+</head>
+
+<body class="text-center">
+<div id="form"><!-- Wrapper -->
+  <header>
+    <img class="mb-4" src="img/logo" alt="" width="142" height="112">
+
+    <h1>Google Photo Frame</h1></header>
+<br>
+    <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
+    <button class="btn btn-lg btn-primary btn-block"  id="sign-in-or-out-button" type="submit">Sign In</button>
+
+    <footer class="container">
+      <br>
+        <p>Paul Cloutier</p>
+        <p>Google Photo Frame</p>
+
+    </footer>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <script async defer src="https://apis.google.com/js/api.js"
+                        onload="this.onload=function(){};handleClientLoad()"
+                        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+                </script>
+
+  </div>
+
+
+
+
+</body>
+</html>
