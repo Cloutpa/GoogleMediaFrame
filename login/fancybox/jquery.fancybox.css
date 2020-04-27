@@ -51,14 +51,14 @@ body.compensate-for-scrollbar {
 
 .fancybox-bg {
     background: rgb(30, 30, 30);
-    opacity: 0;
+    opacity: 1;
     transition-duration: inherit;
     transition-property: opacity;
     transition-timing-function: cubic-bezier(.47, 0, .74, .71);
 }
 
 .fancybox-is-open .fancybox-bg {
-    opacity: .9;
+    opacity: 1;
     transition-timing-function: cubic-bezier(.22, .61, .36, 1);
 }
 
@@ -67,7 +67,7 @@ body.compensate-for-scrollbar {
 .fancybox-caption,
 .fancybox-navigation .fancybox-button {
     direction: ltr;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     transition: opacity .25s ease, visibility 0s ease .25s;
     visibility: hidden;
@@ -377,7 +377,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-progress {
-    background: #ff5268;
+    background: #ffffff;
     height: 2px;
     left: 0;
     position: absolute;
@@ -400,7 +400,7 @@ body.compensate-for-scrollbar {
     border-radius: 0;
     color: #ccc;
     cursor: pointer;
-    opacity: .8;
+    opacity: 1;
     padding: 8px;
     position: absolute;
     right: -12px;
@@ -434,7 +434,7 @@ body.compensate-for-scrollbar {
 .fancybox-navigation .fancybox-button {
     background-clip: content-box;
     height: 100px;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     top: calc(50% - 50px);
     width: 70px;
@@ -542,7 +542,7 @@ body.compensate-for-scrollbar {
 /* transitionEffect: slide */
 
 .fancybox-fx-slide.fancybox-slide--previous {
-    opacity: 0;
+    opacity: 1;
     transform: translate3d(-100%, 0, 0);
 }
 
@@ -863,7 +863,7 @@ body.compensate-for-scrollbar {
     bottom: 0;
     content: '';
     left: 0;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     right: 0;
     top: 0;

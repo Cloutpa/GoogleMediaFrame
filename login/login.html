@@ -18,10 +18,7 @@ Need to be able to add and remove elements from this list.
   <meta name="generator" content="Jekyll v3.8.6">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="img/favicon_io/site.webmanifest">
+
 
   <!-- BootStrap Bill -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +40,7 @@ Need to be able to add and remove elements from this list.
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<link  href="fancybox/jquery.fancybox.min.css" rel="stylesheet">
+	<link  href="fancybox/jquery.fancybox.css" rel="stylesheet">
   <script src="fancybox/jquery.fancybox.js"></script>
 
 
@@ -51,7 +48,7 @@ Need to be able to add and remove elements from this list.
 <script src="signin2.js"></script>
 </head>
 
-<body class="text-center">
+<body class="text-center" onload="loginClearStorage();">
 <div id="form"><!-- Wrapper -->
   <header>
     <img class="mb-4" src="img/logo" alt="" width="142" height="112">
@@ -76,6 +73,13 @@ Need to be able to add and remove elements from this list.
 
   </div>
 
+<script>
+function loginClearStorage(){
+  localStorage.clear();
+
+
+}
+</script>
 
 
 

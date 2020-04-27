@@ -79,7 +79,7 @@
     idleTime: 3,
 
 
-    
+
     // Disable right-click and use simple image protection for images
     protect: false,
 
@@ -272,7 +272,7 @@
 
     slideShow: {
       autoStart: true,
-      speed: 3000
+      speed: 10000
     },
 
     thumbs: {
@@ -1959,8 +1959,8 @@
         maxHeight = parseInt(slide.opts.height, 10);
 
       // Sets the default values from the image
-      slide.width = imgWidth;
-      slide.height = imgHeight;
+      slide.width = (imgWidth*5);
+      slide.height = (imgHeight*5);
 
       if (maxWidth > 0) {
         slide.width = maxWidth;
@@ -4664,7 +4664,7 @@
     },
     slideShow: {
       autoStart: true,
-      speed: 3000,
+      speed: 10000,
       progress: true
     }
   });

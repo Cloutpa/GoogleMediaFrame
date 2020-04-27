@@ -31,11 +31,13 @@
     }).then(function () {
       GoogleAuth = gapi.auth2.getAuthInstance();
 
+
       // Listen for sign-in state changes.
       GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
       // Handle initial sign-in state. (Determine if user is already signed in.)
       var user = GoogleAuth.currentUser.get();
+
       setSigninStatus();
 
 
@@ -45,6 +47,7 @@
       //      "Sign In/Authorize" button.
       $('#sign-in-or-out-button').click(function() {
         handleAuthClick();
+
       });
 
 
@@ -80,8 +83,11 @@
     if (isAuthorized) {
       // If the user is signed in -- change button to sign out
       $('#sign-in-or-out-button').html('Sign out');
-    //  loadClient();
+     // loadClient();
+     $('#userName').html(user.getBasicProfile().getName());
       checkLocation();
+
+
 
 
 //if not signed in
@@ -115,12 +121,18 @@
           else if(window.location.pathname == "/~S0311569/login/home.html"){
           console.log("Home");
           loadClient();
+
           }
 
           else if(window.location.pathname == "/~S0311569/login/album.html"){
           console.log("Albums");
           loadClient();
           getAlbums();
+          getToggleState();
+
+
+          //getAlbumDisplayIDArray();
+          // checkAlbumDisplayID();
 
 
           }
@@ -162,7 +174,7 @@
 
 
 
-
+        let userName;
     //array to hold all photo id user wants to display
     let AlbumDisplayID = [];
     //array to hold all photoBaseID user wants to display
@@ -185,7 +197,10 @@
     let passingAlbum = "-1";
     //temp used to pass next media items page
     let mediaNextPage = "-1";
-    let numberPhotos = 100;
+    let numberPhotos = 25;
+    let nextPageToken;
+    let stateVar = [];
+
 
 
 
@@ -201,6 +216,7 @@
                   console.log("Response", response.result);
                   saveAlbumResponce(response);
                   displayAlbums();
+                  checkingStateVar();
 
 
                 },
@@ -217,9 +233,20 @@
         albumTitleArray[i] = response.result.albums[i].title;
         albumIdArray[i] = response.result.albums[i].id;
         albumMediaItemsCount[i] = response.result.albums[i].mediaItemsCount;
+
+      if(AlbumDisplayID.indexOf(response.result.albums[i].id)){
+        console.log("already in AlbumDisplayID");
+
+        //if in here, then user previously selected the album..
+        //need to get the state of each albumtoggle
+
+      }
+
       }
 
     }
+
+
 //Display data saved from album response
     function displayAlbumData(){
     for (i = 0; i < albumCoverArray.length; i++){
@@ -275,11 +302,11 @@
         })
             .then(function(response) {
                     // Handle the results here (response.result has the parsed body).
-                    console.log("Response", response.result.mediaItems);
+                    //console.log("Response", response.result.mediaItems);
 savePhotosInAlbum(response);
       for(x = 0; x < mediaItemsBaseArray.length; x++){
         var theDiv = document.getElementById("theDiv");
-        theDiv.innerHTML += '<div class="col-md-4"><div class="card mb-4 box-shadow"><img class="card-img-top" src='+ mediaItemsBaseArray[x] +' alt="Card image cap"><div class="card-body"><p class="card-text"></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"></div></div> </div></div>';
+        theDiv.innerHTML += '<div class="col-md-4"><div class="card mb-4 box-shadow"><a data-fancybox="gallery" href = '+ mediaItemsBaseArray[x] + '><img class="bd-placeholder-img card-img-top" src='+ mediaItemsBaseArray[x] +' alt="Google Photo"></img></a><div class="card-body"><p class="card-text"></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"></div></div> </div></div>';
       }
 
                   },
@@ -294,7 +321,7 @@ function savePhotosInAlbum(response){
   for (i = 0; i < response.result.mediaItems.length; i++){
     mediaItemsIdArray[i] = response.result.mediaItems[i].id;
     mediaItemsBaseArray[i] = response.result.mediaItems[i].baseUrl;
-    console.log(mediaItemsBaseArray[i]);
+    //console.log(mediaItemsBaseArray[i]);
 }
 
 
@@ -385,18 +412,23 @@ function getPhotosFromPage(){
 
 
 
+
+
   function checkToggle(state){
+
+
     let id = "myCheckbox(" +state+")";
+
 console.log(document.getElementById(id).checked);
 
   if(document.getElementById(id).checked == true){
-    //add this album into the list of albums that the user wants to saved
-    // can do this by passing albumDisplayID variable the id of the variable that is going to be displayed.
-  // this data needs to be displayed onto a next page, but also saved. will need to use some type of local storage.
+
 AlbumDisplayID.push(albumIdArray[state]);
-checkAlbumDisplayID();
-console.log(AlbumDisplayID.length);
+// checkAlbumDisplayID();
+//console.log(AlbumDisplayID.length);
+stateVar.push(state);
 localStorage.setItem("AlbumDisplayID", JSON.stringify(AlbumDisplayID));
+localStorage.setItem("stateVar", JSON.stringify(stateVar));
 
 
 
@@ -408,9 +440,14 @@ else if(document.getElementById(id).checked == false){
   var a = AlbumDisplayID.indexOf(albumIdArray[state]);
   //array.splice(index of removal, elements wish to be removed
   AlbumDisplayID.splice(a,1);
-  checkAlbumDisplayID();
-  console.log(AlbumDisplayID.length);
+  //b is going to be the var that needs to be cut.
+//check stateVar and find where state is an index
+  var loc = stateVar.indexOf(state);
+  stateVar.splice(loc,1);
+
+  // console.log(AlbumDisplayID.length);
   localStorage.setItem("AlbumDisplayID", JSON.stringify(AlbumDisplayID));
+  localStorage.setItem("stateVar", JSON.stringify(stateVar));
     }
   }
 
@@ -423,12 +460,33 @@ else if(document.getElementById(id).checked == false){
 
 
   function getAlbumDisplayIDArray(){
-    AlbumDisplayID = JSON.parse(localStorage.getItem("AlbumDisplayID"));
-    console.log(AlbumDisplayID.length);
+    let AlbumDisplayID = JSON.parse(localStorage.getItem("AlbumDisplayID"));
+
+   console.log(AlbumDisplayID.length);
     checkAlbumDisplayID();
 
 
   }
+
+  function getToggleState(){
+    window.localStorage.length
+
+
+
+
+if(localStorage.length > 0){
+  stateVar = JSON.parse(localStorage.getItem("stateVar"));
+}
+else{
+  localStorage.setItem("stateVar", JSON.stringify(stateVar));
+
+}
+
+
+  }
+
+
+
 
 
 
@@ -441,17 +499,13 @@ else if(document.getElementById(id).checked == false){
 // //pass that id to the loop which will get the response, and SaveAll will push it into the mediaItemsIdArray
 
      for(x = 0; x < AlbumDisplayID.length; x++){
-
       getAllAlbumPhotosLoop(AlbumDisplayID[x]);
 
 
   }
 
 
-setTimeout(() => {  console.log("mediaItemsBaseArray.length"); }, 2000);
-setTimeout(() => {  console.log(mediaItemsBaseArray.length); }, 2300);
-
- setTimeout(() => {  displayPhotos(); }, 2000);
+ setTimeout(() => {  displayPhotos(); }, 3000);
 }
 
 
@@ -477,17 +531,19 @@ setTimeout(() => {  console.log(mediaItemsBaseArray.length); }, 2300);
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response.result);
-                let nextPageToken = response.result.nextPageToken;
+
+
+                nextPageToken = response.result.nextPageToken;
+
                 if(nextPageToken != null){
-                  console.log(response.result.nextPageToken);
-
-
-                }
-                if(nextPageToken == null){
-                  console.log("pageToken is null");
-
                   saveAllAlbumPhotos(response);
+                  logPageToken(AlbumID);
+                }
 
+              else  if(nextPageToken == null){
+                  //only one page of photos
+                  console.log("pageToken is null");
+                  saveAllAlbumPhotos(response);
                 }
 
 
@@ -495,3 +551,88 @@ setTimeout(() => {  console.log(mediaItemsBaseArray.length); }, 2300);
               });
 
   }
+
+
+function logPageToken(AlbumID){
+console.log(nextPageToken);
+
+
+
+  console.log("not null");
+  //get the next responce
+while(nextPageToken != null){
+  //console.log(nextPageToken);
+  return gapi.client.photoslibrary.mediaItems.search({
+        "resource": {
+          //breaking because I left it with invalid albumID
+          "albumId": AlbumID,
+          "pageToken": nextPageToken
+        }
+      })
+          .then(function(response) {
+                  // Handle the results here (response.result has the parsed body).
+                  console.log("Response", response);
+                  saveAllAlbumPhotos(response);
+
+                  nextPageToken = response.result.nextPageToken;
+                  logPageToken();
+
+                },
+                function(err) { console.error("Execute error", err); });
+
+
+}
+
+
+}
+
+// localStorage.setItem("stateVar", JSON.stringify(stateVar));
+
+function checkingStateVar(){
+if(stateVar != null){
+
+for(a = 0; a < stateVar.length; a++){
+  console.log(a);
+  var tmp = stateVar[a];
+
+  //currently just setting the correct number of albums to check.. needs to check the indexes
+  document.getElementById('myCheckbox('+tmp+')').checked = true;
+
+}
+
+}
+
+  else{
+    console.log("stateVar null");
+  }
+}
+
+
+
+
+
+
+function checkingStateVar(){
+let tmp = JSON.parse(localStorage.getItem("stateVar"));
+console.log(tmp);
+if(tmp != null){
+  if(tmp.length > 0){
+  console.log("stateVar exists");
+  for(x = 0; x < tmp.length; x++){
+    var toggle = tmp[x];
+    console.log(toggle);
+    document.getElementById('myCheckbox('+toggle+')').checked = true;
+    //localStorage.setItem("stateVar", JSON.stringify(stateVar));
+  }
+
+  }
+  else if(tmp <= 0){
+    console.log("stateVar does not exist");
+
+  }
+}
+else if(tmp == null){
+  console.log("stateVar does not exist");
+}
+
+}
